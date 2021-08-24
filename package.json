@@ -1,4 +1,5 @@
 {
+  "proxy": "http://52.205.69.223/",
   "name": "reactcrud",
   "version": "0.1.0",
   "private": true,
