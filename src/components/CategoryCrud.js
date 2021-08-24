@@ -1,31 +1,32 @@
 ﻿import React, { Component } from 'react';
+import configFile from '../config.json';
 
 export class CategoryCrud extends Component {
     static displayName = CategoryCrud.name;
 
     constructor(props) {
         super(props);
-        this.state = { users: [], loading: true };
+        this.state = { categories: [], loading: true };
     }
 
     componentDidMount() {
-        this.getAllUsers();
+        this.getAllCategories();
     }
 
-    static renderUsersTable(users) {
+    static renderCategoriesTable(categories) {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
                     <tr>
-                        <th>idUser</th>
-                        <th>name</th>
+                        <th>categoryId</th>
+                        <th>categoryName</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map(user =>
-                        <tr key={user.idUser}>
-                            <td>{user.idUser}</td>
-                            <td>{user.name}</td>
+                    {categories.map(category =>
+                        <tr key={category.categoryId}>
+                            <td>{category.categoryId}</td>
+                            <td>{category.categoryName}</td>
                         </tr>
                     )}
                 </tbody>
@@ -36,20 +37,20 @@ export class CategoryCrud extends Component {
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : CategoryCrud.renderUsersTable(this.state.users);
+            : CategoryCrud.renderCategoriesTable(this.state.categories);
 
         return (
             <div>
-                <h1 id="tabelLabel" >Buscar usuários no DB</h1>
+                <h1 id="tabelLabel" >Buscar categorias no DB</h1>
                 <p>This component demonstrates fetching data from the server.</p>
                 {contents}
             </div>
         );
     }
 
-    async getAllUsers() {
-        const response = await fetch('user');
+    async getAllCategories() {
+        const response = await fetch(configFile.API + 'category');
         const data = await response.json();
-        this.setState({ users: data, loading: false });
+        this.setState({ categories: data, loading: false });
     }
 }

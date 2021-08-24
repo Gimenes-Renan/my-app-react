@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import configFile from '../config.json';
 
 export class StockCrud extends Component {
     //Adicionar nome da classe aqui
@@ -54,7 +55,7 @@ export class StockCrud extends Component {
 
     async getAll() {
         //Adicionar ao fetch o controller que será chamado
-        const response = await fetch('stock');
+        const response = await fetch(configFile.API + 'stock');
         const data = await response.json();
         this.setState({ grid: data, loading: false });
     }

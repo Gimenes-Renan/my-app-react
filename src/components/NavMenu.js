@@ -40,23 +40,23 @@ export class NavMenu extends Component {
                                     <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/user">Usuarios (API)</NavLink>
-                                </NavItem>
-                                <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/UserCrud">UserCrud</NavLink>
                                 </NavItem>
 
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/brand">Brands</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/user">Usuários (API)</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/category">Categories</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/product">Produtos</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/product">Products</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/brand">Marcas</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/stock">Stocks</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/category">Categorias</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/stock">Estoque</NavLink>
                                 </NavItem>
                             </ul>
                         </Collapse>

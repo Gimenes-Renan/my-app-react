@@ -1,31 +1,32 @@
 ﻿import React, { Component } from 'react';
+import configFile from '../config.json';
 
 export class BrandCrud extends Component {
     static displayName = BrandCrud.name;
 
     constructor(props) {
         super(props);
-        this.state = { users: [], loading: true };
+        this.state = { brands: [], loading: true };
     }
 
     componentDidMount() {
-        this.getAllUsers();
+        this.getAllBrands();
     }
 
-    static renderUsersTable(users) {
+    static renderBrandsTable(brands) {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
                     <tr>
-                        <th>idUser</th>
-                        <th>name</th>
+                        <th>brandId</th>
+                        <th>brandName</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map(user =>
-                        <tr key={user.idUser}>
-                            <td>{user.idUser}</td>
-                            <td>{user.name}</td>
+                    {brands.map(brand =>
+                        <tr key={brand.brandId}>
+                            <td>{brand.brandId}</td>
+                            <td>{brand.brandName}</td>
                         </tr>
                     )}
                 </tbody>
@@ -36,20 +37,20 @@ export class BrandCrud extends Component {
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : BrandCrud.renderUsersTable(this.state.users);
+            : BrandCrud.renderBrandsTable(this.state.brands);
 
         return (
             <div>
-                <h1 id="tabelLabel" >Buscar usuários no DB</h1>
+                <h1 id="tabelLabel" >Buscar marcas no DB</h1>
                 <p>This component demonstrates fetching data from the server.</p>
                 {contents}
             </div>
         );
     }
 
-    async getAllUsers() {
-        const response = await fetch('user');
+    async getAllBrands() {
+        const response = await fetch(configFile.API + 'brand');
         const data = await response.json();
-        this.setState({ users: data, loading: false });
+        this.setState({ brands: data, loading: false });
     }
 }
